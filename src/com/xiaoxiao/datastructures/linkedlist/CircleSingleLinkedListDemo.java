@@ -65,26 +65,21 @@ class CircleSingleLinkedList {
 
         if (first == null || start > sum || start < 1 || out < 1){
             System.out.println("输入数据不合法");
+            return;
         }
         //辅助节点需要满足为first节点的前一个节点
-        while (true){
-            if (temp.getNext() == first){
-                break;
-            }
+        while (temp.getNext() != first){
             temp = temp.getNext();
         }
 
-        //定位好first和temp节点后需要移位到开始的节点
+        //定位好first和temp节点后需要移位到开始的节点，注意这里时实际移动的步数，画图可以应该为开始节点的编号减一
         for (int i = 0; i < start - 1; i++){
             first = first.getNext();
             temp = temp.getNext();
         }
 
         //开始向外输入满足条件的节点
-        while (true){
-            if (first == temp){
-                break;
-            }
+        while (first != temp){
             //向下移动
             for (int i = 0; i < out - 1; i++){
                 first = first.getNext();
